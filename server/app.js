@@ -16,11 +16,12 @@ mongoose.connection.once('open', () => {
 app.use('/graphql', graphqlHTTP({
     // use it insid midleware
     schema,
+    // for graphique view
     graphiql: true
 }))
 
 
 
 app.listen(4000, () => {
-    console.log('now listening for requests on port 4000');
+    console.log('now listeniiiing on port 4000');
 });
