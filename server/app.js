@@ -3,9 +3,12 @@ const graphqlHTTP = require("express-graphql").graphqlHTTP
 const mongoose = require('mongoose')
 const schema = require('./schema/schema')
 const app = express();
+const cors = require('cors')
 
 const url = "mongodb+srv://admin:admin123@cluster0.tgvi6.mongodb.net/graphqlproject?retryWrites=true&w=majority"
-
+app.use(cors({
+    origin: '*'
+}))
 // cnx to db 
 mongoose.connect(url);
 mongoose.connection.once('open', () => {

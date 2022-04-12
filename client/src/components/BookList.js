@@ -1,15 +1,37 @@
-import React from 'react'
-// to pass query 
-// import {gql} from 'apollo-boost'
+import React, { useEffect, useState } from 'react';
+import { gql, useQuery } from '@apollo/client';
 
-const BookList = () => {
+
+const BOOK_LIST = gql`
+    {
+        books {
+            id,
+            name,
+            genre,
+        }
+    }
+`
+
+export const BookList = () => {
+    const { loading, error, data } = useQuery(BOOK_LIST);
+    const [books,setBooks] = useState([])
+
+    useEffect(() => {
+
+         if (data) {
+            setBooks(data.books) ;      
+        }
+    }, [data])
     return (
         <div>
-           <ul id="book-list">
-               <li>Book Name</li>
-           </ul>
+            <ul id="book-list">
+                {books && books.map((e, i) => {
+                    return (
+                        <li key={i} >{e.name}</li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }
 
-export default BookList;

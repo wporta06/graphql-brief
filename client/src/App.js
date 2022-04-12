@@ -1,20 +1,14 @@
 import React from "react";
-import BookList from "./components/BookList"
-// import ApolloClient from 'apollo-boost'
-// wrap data recieved from server in our application   
-// import { ApolloProvider } from 'react-apollo';
+import { BookList } from "./components/BookList"
 
-// const client = new ApolloClient({
-//   uri: 'http://localhost:4000/graphql'
-// })
 
-function App() {
+// Pass the ApolloClient instance to the ApolloProvider component
+export const App = () => {
   return (
-    <>
-      <h1>tsssst</h1>
-      <BookList />
-    </>
-  );
+    <BookList />
+  )
 }
 
-export default App;
+
+
+
